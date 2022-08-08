@@ -3,6 +3,21 @@
 ![""](https://github.com/sarahm44/currency-forecasting/blob/main/Images/jpy.png)
 
 ## Table of Contents
+- [Overview](#overview)
+- [Time Series Forecasting](#time-series-forecasting)
+  * [Plot Settle Price](#plot-settle-price)
+  * [Decomposition Using a Hodrick-Prescott Filter](#decomposition-using-a-hodrick-prescott-filter)
+  * [Forecasting Returns using an ARMA Model](#forecasting-returns-using-an-arma-model)
+  * [Forecasting the Exchange Rate Price using an ARIMA Model](#forecasting-the-exchange-rate-price-using-an-arima-model)
+  * [Volatility Forecasting with GARCH](#volatility-forecasting-with-garch)
+  * [Conclusions](#conclusions)
+- [Regression Analysis](#regression-analysis)
+  * [Data Preparation](#data-preparation)
+  * [Linear Regression Model](#linear-regression-model)
+  * [Make Predictions Using Test Data](#make-predictions-using-test-data)
+  * [Out of Sample Performance](#out-of-sample-performance)
+  * [In Sample Performance](#in-sample-performance)
+  * [Conclusions](#conclusions-1)
 
 ## Overview
 
