@@ -16,6 +16,8 @@ Relevant data for the analysis is contained in [cad_jpy.csv](https://github.com/
 
 ## Time Series Forecasting
 
+In [this notebook](https://github.com/sarahm44/currency-forecasting/blob/main/time_series_analysis.ipynb), I loaded [historical Canadian Dollar-Yen exchange rate futures data](https://github.com/sarahm44/currency-forecasting/blob/main/cad_jpy.csv) and applied time series analysis and modeling to determine whether there is any predictable behavior.
+
 ### Plot Settle Price
 
 This is to check for any long or short term patterns. 
@@ -95,8 +97,52 @@ The GARCH Model predicts that volatility will increase in the near term.
 
 ### Conclusions
 
-Based on this time series analysis, I would not by yen now, as the forecast indicates negative returns, as well as increased volatility.
+Based on this time series analysis, I would not buy yen now, as the forecast indicates negative returns, as well as increased volatility.
 
 Risk of the yen is expected to increase, given that volatility is predicted to increase in the near term.
 
 When it comes to using these models for trading, GARCH is the best of the models, given two of the p-values are below 0.05. The ARIMA and ARMA model have a number of p-values above 0.05 so I would be less confident using these for trading.
+
+## Regression Analysis
+
+In this notebook, I built an SKLearn linear regression model to predict Yen futures ("settle") returns with lagged CAD/JPY exchange rate returns.
+
+### Data Preparation
+
+I created a series using "Price" percentage returns, drop any NaNs and create a lagged return using the shift function.
+
+![""](https://github.com/sarahm44/currency-forecasting/blob/main/Images/data_prep.png)
+
+I then created a train/test split for the data using 2018-2019 for testing and the rest for training.
+
+![""](https://github.com/sarahm44/currency-forecasting/blob/main/Images/train_test_split.png)
+
+### Linear Regression Model
+
+I created a Linear Regression model and fit it to the training data.
+
+![""](https://github.com/sarahm44/currency-forecasting/blob/main/Images/linear_regression_model.png)
+
+### Make Predictions Using Test Data
+
+I evaluated the model using data that it has never seen before.
+
+See below a plot of the first 20 predictions (orange) versus the true values for returns (blue):
+
+![""](https://github.com/sarahm44/currency-forecasting/blob/main/Images/actual_v_predicted.png)
+
+### Out of Sample Performance
+
+I evaluated the model using "out-of-sample" data. Out-of-sample data is data that the model hasn't seen before (testing data).
+
+![""](https://github.com/sarahm44/currency-forecasting/blob/main/Images/out_of_sample.png)
+
+### In Sample Performance
+
+I evaluated the model using "in-sample" data. In-sample data is data that the model was trained on (training data).
+
+![""](https://github.com/sarahm44/currency-forecasting/blob/main/Images/in_sample.png)
+
+### Conclusions
+
+The model performs better on the out-of-sample data as compared to the in-sample data. This is indicated by the lower RMSE for the out-of-sample data.
